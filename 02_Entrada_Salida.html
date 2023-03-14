@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+		<!-- Metadata -->
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+				<meta name="description" content="Está es una página de ejemplos de Js">
+				<meta name="keywords" content="HTML5, CSS3, Javascript">
+				<meta name="author" content="Candy González">
+		<!-- Enlazados -->
+		<link rel="canonical" href="#" />
+		<link rel="icon" type="img/png" href="img/favicon.png">
+		<link rel="stylesheet" href="css/style.css">
+        <title>JavaScript</title>
+	<script>
+		/*------------------------------------------------------------
+			Posibilidades de visualización de JavaScript
+		--------------------------------------------------------------
+		innerHTML
+		document.write()
+		window.alert()
+		console.log()
+		--------------------------------------------------------------*/
+
+		// Un script puede estar en el HEAD
+		alert('Esto es una alerta');  	/* Ventana modal: se abren en primer plano, detiene el flujo de ejecución del programa. No se pueden minimizar. Son muy invasivas */
+		window.alert("esto es otra alerta");
+		console.log("Esto solo es para el navegador");	// El resultado se ve en la consola del navegador
+		document.write('Hola mundo');	// Escribimos dentro del documento web desde Js. El uso de document.write() después de cargar un documento HTML, eliminará todo el HTML existente. Ejemplo: https://www.w3schools.com/js/tryit.asp?filename=tryjs_output_write_over
+	</script>
+	
+	<link rel="stylesheet" href="css/estilo.css"> 	<!-- Incluye css de un archivo externo-->
+	<script src="js/ejemplo.js"></script>  					<!-- Incluye Js de un archivo externo-->
+</head>
+
+<body>
+
+	<h1>Título de la Web</h1>
+	<!-- Puedo colocar un script para escribir texto entre dos etiquetas -->
+	<h2><script> document.write('Colocar contenido Js dentro de etiquetas html');</script></h2>
+	
+	<script> 
+	//Un párrafo en el BODY
+	document.write("<p> Támbien se puede hacer lo contrario y colocar etiquetas html dentro de JS</p>");
+	</script>
+	
+	<p id="p01"></p> 
+
+	<script>
+	  document.getElementById("p01").innerHTML = 5 + 6;  //Muestra el resultado de la suma 11 en el párrafo con id=""p01
+	</script>
+
+	<script>
+		var nombre;																		// Declaración de una variable
+		var edad;
+		nombre = prompt('Ingrese su nombre:',''); 		// Ventana emergente de entrada de datos
+		edad = prompt('Ingrese su edad:','');
+		document.write('Hola ');											// Escribe la cadena Texto
+		document.write(nombre);												// Escribe el valor de la variable nombre
+		document.write(' asi que tienes ');
+		document.write(edad);
+		document.write(' años');
+		window.print();																// Abre la opción imprimir del navegador
+	</script>
+
+</body>
+</html>

@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Adivina el número</title>
+    <style>
+        html {
+            font-family: sans-serif;
+        }
+        
+        body {
+            width: 50%;
+            max-width: 800px;
+            min-width: 480px;
+            margin: 0 auto;
+        }
+        
+        .resultado {
+            color: white;
+            padding: 3px;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Jugamos a Adivina el número</h1>
+    <p>Selecciona un número aleatorio entre el 1 y 100. Ve si puedes adivinarlo en 10 turnos o menos. Te daremos pistas, en cada intento vamos a decirte si tu número es muy alto o muy bajo.</p>
+    <div class="form"> <label for="numAdivinar">Adivina el numero: </label><input type="text" id="numAdivinar" class="numAdivinar"> <input type="submit" value="Adivina" class="btnAdivinar"> </div>
+    <div class="resultParas">
+        <p class="intentos"></p>
+        <p class="resultado"></p>
+        <p class="pista"></p>
+    </div>
+</body>
+<script>
+    // Tu código JavaScript va aquí.
+    var numeroAleatorio = Math.floor(Math.random() * 100) + 1;
+    var intentos = document.querySelector('.intentos');
+    var resultado = document.querySelector('.resultado');
+    var pista = document.querySelector('.pista');
+    var btnAdivinar = document.querySelector('.btnAdivinar');
+    var numAdivinar = document.querySelector('.numAdivinar');
+    var contador = 1;
+    var resetButton;
+
+    function comprobar() {
+      var jugador = Number(numAdivinar.value);
+      if (contador === 1) {
+        intentos.textContent = 'Intentos anteriores: ';
+      }
+
+      intentos.textContent += jugador + ' ';
+
+      if (jugador === numeroAleatorio) {
+        resultado.textContent = 'Felicidades! Estas en lo correcto!';
+        resultado.style.backgroundColor = 'green';
+        pista.textContent = '';
+        reiniciar();
+      } else if (contador === 10) {
+        resultado.textContent = '!!!Fin del juego!!!';
+        pista.textContent = '';
+        reiniciar();
+      } else {
+        resultado.textContent = 'Equivocado!';
+        resultado.style.backgroundColor = 'red';
+        if(jugador < numeroAleatorio) {
+          pista.textContent='El numero es muy pequeño!' ;
+        } else if(jugador > numeroAleatorio) {
+          pista.textContent = 'El numero es muy grande!';
+        }
+      }
+
+      contador++;
+      numAdivinar.value = '';
+    }
+
+    btnAdivinar.addEventListener('click', comprobar);
+
+    function reiniciar() {
+      numAdivinar.disabled = true;
+      btnAdivinar.disabled = true;
+      resetButton = document.createElement('button');
+      resetButton.textContent = 'Inicia nuevo juego';
+      document.body.appendChild(resetButton);
+      resetButton.addEventListener('click', resetJuego);
+    }
+
+    function resetJuego() {
+      contador = 1;
+      var resetParas = document.querySelectorAll('.resultParas p');
+      for(var i = 0 ; i < resetParas.length ; i++) {
+        resetParas[i].textContent='';
+      }
+
+      resetButton.parentNode.removeChild(resetButton);
+      numAdivinar.disabled = false;
+      btnAdivinar.disabled = false;
+      numAdivinar.value='';
+      numAdivinar.focus();
+      resultado.style.backgroundColor='white';
+      numeroAleatorio=Math.floor(Math.random() * 100) + 1;
+    }
+</script>
+
+</html>

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicios</title>
+    <script>
+            var n = parseInt(prompt("Introduce un número para saber su factorial", "0"));
+            var resultado = 1; 
+            if (n>1){
+                for(var i=1; i<=n; i++) {
+                    resultado *= i;
+                }
+                alert("El factorial de "+ n + " es: " + resultado);
+            }else{
+                alert("No existe el factorial de números negativos");
+            } 
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

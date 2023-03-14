@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Incluye la librería, donde scr especifica la ruta donde se encuentra. En este caso la de Google-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <title>Eventos jQuery</title>
+
+    <script>
+        /* Cambia los colores d los input al recibir o perder el foco. Prueba usando el tabulador para pasar deun controla otro */
+        $(document).ready(function(){                           // esta función permite la manipulación del documento html una vez cargado
+          $("input").focus(function(){                          // evento que se desencadena cuando un input recibe el foco
+            $(this).css("background-color", "DeepSkyBlue");     // cambiando las propiedades css
+          });
+          $("input").blur(function(){                           // evento que se desencadena cuando un input pierde el foco
+            $(this).css("background-color", "FireBrick");
+          });
+        });     // cierra el parentsis del método ready
+    </script>
+
+    <script>
+      /* Demuestra otros eventos del ratón, usando los elementos p */
+      $(document).ready(function(){
+        $("p").on({
+          mouseenter: function(){
+            $(this).css("background-color", "LightCoral");
+          },  
+          mouseleave: function(){
+            $(this).css("background-color", "lightblue");
+          }, 
+          click: function(){
+            $(this).css("background-color", "LightSalmon");
+          }  
+        });
+      });
+    </script>
+
+</head>
+<body>
+    
+    <form>
+        Nombre: <input type="text" name="nombre"><br><br>
+        Email: <input type="text" name="email">
+    </form>
+
+    <p>Este párrafo es para demostrar el segundo script</p>
+
+
+
+</body>
+</html>

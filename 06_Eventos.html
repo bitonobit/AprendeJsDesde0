@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <!-- Metadata -->
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="canonical" href="#" />
+    <meta name="description" content="Está es una página de ejemplos de Js">
+    <meta name="keywords" content="HTML5, CSS3, Javascript">
+    <meta name="author" content="Candy González">
+    <link rel="icon" type="img/png" href="img/favicon.png">
+    <title>Eventos</title>
+    <script>
+        function miMensaje() {
+            alert("Ejemplo del evento onload: Esta ventana aparece cuando la página ha terminado de cargarse!");
+        }
+    </script>
+</head>
+
+<body onload="miMensaje()">
+    <!-- Sintaxis: 
+         <elemento evento="código JavaScript"></elemento>
+    -->
+    <h1> Eventos onclick </h1>
+    <p id="miId">Muestra laFecha aquí, al hacer click en el botón</p>
+    <button onclick="document.getElementById('miId').innerHTML=Date()">Fecha</button>
+    <!-- Ejemplo 01 -->
+    <h3 onclick="this.innerHTML = 'Un texto puede cambiar dentro del mismo elemento!!'">Click aquí</h3>
+    <!-- Ejemplo 02 -->
+    <h3 onclick="cambiame(this)">Click aquí</h3>
+    <script>
+        function cambiame(id) {                 // id es el objeto this, es decir el h3
+            id.innerHTML = "Un evento puede llamar a una funnción!!";
+            //document.getElementById("el_id").style.color = "blue";
+            id.style.color = "blue";
+        }
+    </script>
+
+    <h1> Eventos onchange </h1>
+    Nombre: <input type="text" id="nombre" onchange="mayusculas()">
+    <p>Cuando el cuadro de texto cambia llama a la función mayúsculas y cambia el
+        texto a mayúsculas.</p>
+    <script>
+        function mayusculas() {
+            var x = document.getElementById("nombre");
+            x.value = x.value.toUpperCase();
+        }
+    </script>
+
+    <h1> Eventos onmouseover y onmouseout </h1>
+    <div onmouseover="mOver(this)" onmouseout="mOut(this)"
+        style="background-color:#2c98d6; width:250px; height:20px; padding:5px;">
+        Pasa el ratón por encima
+    </div>
+    <script>
+        function mOver(obj) {
+            obj.innerHTML = "Hola!"
+        }
+        function mOut(obj) {
+            obj.innerHTML = "Adiós!"
+        }
+    </script>
+    <br>
+
+    <h1> Controlador de Eventos </h1>
+    <p>Sólo un botón en html sin evento en la etiqueta</p>
+    <button id="myBtn">Fecha</button>
+    <p id="demo"></p>
+    <script src="js/11_eventos.js"></script>
+
+
+</body>
+
+</html>

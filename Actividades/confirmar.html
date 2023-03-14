@@ -1,0 +1,22 @@
+<html>
+<head>
+<script type="text/javascript">
+   function ver_confirm() 
+   {
+      var name=confirm("Pulsa un botón")
+      if (name==true) {
+         document.write("Has pulsado el botón Aceptar");
+      }
+      else {
+         document.write("Has pulsado el botón Cancelar");
+      }
+   }
+</script>
+</head>
+   
+<body>
+<form>
+   <input type="button" onclick="ver_confirm()" value="Mostrar ventana confirmación">
+</form>
+</body>
+</html>

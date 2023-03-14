@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    	<!-- Metadata -->
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+		    <link rel="canonical" href="#" />
+		    <link rel="icon" type="img/png" href="img/favicon.png">
+        <title>Eventos</title>
+        <meta name="description" content="Está es una página de ejemplos de Js">
+        <meta name="keywords" content="HTML5, CSS3, Javascript">
+        <meta name="author" content="Candy González">
+</head>
+<body>
+
+<h1>JavaScript Manejo de errores</h1>
+  <h3>Ejemplo 01</h3>
+    <p id="muestraError"></p>
+    <script>
+        try {
+        miFuncion();
+        }
+        catch(err) {
+        document.getElementById("muestraError").innerHTML = err.message;      //Muestra el error miFuncion() no está definida
+        }
+    </script>
+
+
+  <h3>Ejemplo 02</h3>
+  <label>Ingresa un número del 1 al 10:</label>
+  <input id="i01" type="text">                                     <!-- Cuadro de texto -->
+  <button type="button" onclick="miFuncion2()">Validar</button>   <!-- Botón que llama a miFuncion2()-->
+  <p id="p01" style="color: crimson"></p>                       <!-- Párrafo donde aparecerá el error en rojo -->
+
+<script>
+function miFuncion2() {
+  var mensaje, x;                                   //Declarar variables
+  mensaje = document.getElementById("p01");         //En la variable mensaje guardo el párrafo con id=p01
+  mensaje.innerHTML = "";                           //Le pongo dentro una cadena vacía al p con id=p01
+  x = document.getElementById("i01").value;         //Guardo en x el valor del input con id=i01
+  try { 
+    if(x == "")  throw "No has escrito nada";       //Estas son las acciones definidos por mi, el err es lo que está después de throw
+    if(isNaN(x)) throw "Esto no es un número";
+    x = Number(x);
+    if(x < 1)  throw "El número debe ser mayor o igual a 1";
+    if(x > 10)   throw "El número debe ser menor o igual a 10";
+  }
+  catch(err) {
+    mensaje.innerHTML = "Error: " + err;
+  }
+    // Descomentar para demostrar que finally se ejecuta exista o no error limpiando el input
+    //   finally {
+    //     document.getElementById("i01").value = "";
+    //   }
+}
+</script>
+
+</body>
+</html>

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <!-- Metadata -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Registro</title>
+    <script src="js/misFunciones.js"></script>
+    <style>
+        html {
+            font-family: sans-serif;
+        }
+        
+        body {
+            width: 90%;
+            margin: auto;
+        }
+        label {
+            padding-inline-end: 0.5em;
+        }
+        input {
+            padding-inline-end: 0.5em;
+            margin: 0.55em;
+            width: 30em;
+        }
+        .resultado {
+            color: white;
+            padding: 3px;
+        }
+    </style>
+</head>
+
+<body>
+    
+    <h1>Registro de clientes</h1>
+    <p>Rellena el formulario. Presiona el botón y valida tus datos para poder registrarte.</p>
+    <form action="" method="" name="clienteForm">
+      <label>Nombre: </label>
+      <input type="text" id="nombre" name="nombre" ><br> 
+      <label>Apellido: </label>
+      <input type="text" id="apellido" name="apellido"><br>
+      <label>DNI: </label>
+      <input type="text" id="dni" name="dni"><br>
+      <label>Email: </label>
+      <input type="email" id="email" name="email"><br><br>
+    </form>
+      <button id="btn1" onclick="regitrarCliente()">Registrar</button> 
+        
+    <div id="clientes">
+        <!-- Pudes mostrar aquí los clientes registrados -->
+        <p id="registrados"></p>
+        <br>      
+        <hr>  
+        <br>
+    </div>
+
+      
+   
+</body>
+</html>

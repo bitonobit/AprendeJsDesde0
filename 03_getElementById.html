@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Js</title>
+</head>
+
+<body>
+    <h1>Ejemplos del método getElementById</h1>
+
+    <h2>Un botón que ejecuta código con el evento onclick</h2>
+
+    <p id="01">Colocar o cambiar el contenido de un párrafo</p>
+    
+    <button type="button"
+        onclick='document.getElementById("01").innerHTML = "El botón escribió esto dentro del párrafo con id=01 cambiando el contenido de las etiquetas"'>Cambiar contenido</button>
+    <hr>
+
+    <h2>Un botón que cambia el estilo de un párrafo usando las propiedades style y fontSize</h2>
+
+    <p id="02">JavaScript puede cambiar el estilo de este elemento HTML</p>
+    <button type="button" onclick="document.getElementById('02').style.fontSize='35px'">Cambiar estilo</button>
+    <hr>
+
+    <h2>Un botón que muestra un párrafo cambiando la propiedad display</h2>
+
+    <p id="03" style="display:none">Texto que no se ve porque el display:none </p>
+    <button type="button" onclick="document.getElementById('03').style.display='block'">Mostrar</button>
+
+
+</body>
+
+</html>

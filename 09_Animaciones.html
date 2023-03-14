@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+	<!-- Metadata -->
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="canonical" href="#" />
+        <link rel="icon" type="img/png" href="img/favicon.png">
+        <title>JavaScript</title>
+        <meta name="description" content="Está es una página de ejemplos de Js">
+        <meta name="keywords" content="HTML5, CSS3, Javascript">
+        <meta name="author" content="Candy González">
+        <noscript>Lo siento, su navegador no soporta JavaScript!</noscript>
+        <style>
+                #container {
+                  width: 450px;
+                  height: 450px;
+                  position: relative;   /* El elemento contnedor debe tener una posición relativa*/
+                  background: #69a4db;
+                }
+                #animate {
+                  width: 100px;
+                  height: 100px;
+                  position: absolute;   /* El elemento animado debe tener una posición absoluta*/
+                  background: #64f0aa;
+                }
+                /*Barra de progreso*/
+                #miProgreso {
+                  width: 100%;
+                  height: 30px;
+                  position: relative;
+                  background-color: #ddd;
+                }
+                #miBarra {
+                  background-color: #4CAF50;
+                  width: 10px;
+                  height: 30px;
+                  position: absolute;
+                }
+        </style>
+</head>
+<body>
+    <!-- Ejemplo 01: mueve el cuadro verde en diagonal dentro del contenedor -->
+    <p><button onclick="meMuevo()">Muéveme!</button></p> 
+    <div id ="container">
+        <div id ="animate">Contenedor para la animación</div>  <!-- este es el elemento a animar -->
+    </div>
+    <script>
+            function meMuevo() {
+              var elemento = document.getElementById("animate");   
+              var posicion = 0;
+              var id = setInterval(cuadro, 5);           
+              /* El método setInterval() va a llamar a una función o evalúar una expresión 
+              a intervalos específicos (en milisegundos), en este caso llama a la función 
+              cuadro cada 5 milisegundos y la sigue llamando hasta que se llame al método
+              clearInterval() o se cierre la ventana.
+              Además setInterval() devuelve un valor de ID que se utilizará como parámetro
+              para el método clearInterval().
+              1 segundo = 1000 ms
+              Sintaxis: setInterval(funcion, millisegundos)        */
+              function cuadro() {
+                if (posicion == 350) {      //450px del contenedor, menos 100px del cuadro don los 350 pixeles que puede moverse el cuadro sin salirse del contenedor
+                  clearInterval(id);
+                  /* clearInterval() detiene la ejecución de setInterval()
+                   Sintaxis: clearInterval(var), donde var es la variable 
+                   que guarda el valor de retorno de setInterval(), en este caso id.    */
+                } else {
+                  posicion++; 
+                  elemento.style.top = posicion + "px";     //el elemento es el div animate 
+                  elemento.style.left = posicion + "px"; 
+                }
+              }
+            }
+    </script>
+
+    <!-- Ejemplo 02 -->
+    <h1>Barra de progreso</h1>
+        <div id="miProgreso">
+          <div id="miBarra"></div>
+        </div>
+        <br>
+        <button onclick="mover()">Iniciar</button> 
+        
+        <script>
+        function mover() {      
+          // función que crea el efecto de rellenar la barra de estado
+          var elemento = document.getElementById("miBarra");   
+          var width = 0;
+          var id = setInterval(cuadrito, 10);   //Llamada a la función cuadrito cada 10 milisegundos
+          
+          function cuadrito() {     //función que le agrega ancho al elemento hasta el 100%, donde se para con clearInterval
+            if (width == 100) {
+              clearInterval(id);
+            } else {
+              width++;              //Suma 1 al ancho del elemento, en este caso miBarra
+              elemento.style.width = width + '%'; 
+            }
+          }
+        }
+        </script>
+            
+</body>
+</html>

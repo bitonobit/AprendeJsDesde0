@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<!-- Incluye la librería, donde scr especifica la ruta donde se encuentra. En este caso la de Google-->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+<!-- En este otro Microsoft 
+        <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.4.1.min.js"></script>
+    En caso de ser local: 
+        <script src="jquery-3.4.1.min.js"></script>
+        <script src="js/jquery-3.4.1.min.js"></script>
+-->
+
+
+<!-- Scripts que utilizan la librería jQuery llamando a funciones de la misma -->
+<script>
+    /******************************************************************* 
+     Este Script hace que un párrafo se oculte al hacer click sobre él 
+    ********************************************************************/
+
+    $(document).ready(function(){       // esta función permite la manipulación del documento html
+    $("p").click(function(){            // "p" es el selctor de etiqueta usado en css para dar estilo a los párrafos, pues es una etiqueta html. Click es un evento
+        $(this).hide();                 // this se refiere al elemento seleccionado ( en este caso a p). hide es un método
+    });
+    });
+    /*************************************************************************************
+     * Ejercicios 
+     * https://www.w3schools.com/jquery/exercise_jq.asp?filename=exercise_jq_selectors1
+     ************************************************************************************/
+</script>
+
+<script>
+    /********************************************************************************* 
+     Este Script hace que todos los párrafo se oculten al hacer click sobre el botón 
+    **********************************************************************************/
+        $(document).ready(function(){
+          $("button").click(function(){
+            $("p").hide();                      // oculta todos los p
+          });
+        });        
+</script>
+
+<script>
+/************************************************************************************************************* 
+                            OTROS EJEMPLOS DE SELECTORES
+-------------------------------------------------------------------------------------------------------------- 
+        Sintaxis                    |                Descripción    
+--------------------------------------------------------------------------------------------------------------
+     $("*")                         | Oculta todos los elementos
+     $(this)                        | Selecciona el elemento actual
+     $("p.intro")	                  | Selecciona todos los <p> con class="intro"	
+     $("p:first")	                  | Selecciona el primer elemento <p>  
+     $("ul li:first")	              | Selecciona el primer elemento <li> del elemento <ul>	
+     $("ul li:first-child")	        | Selecciona el primer elemento <li> de cada elemento <ul>	
+     $("[href]")	                  | Selecciona todos los elementos con atributo href 	
+     $("a[target='_blank']")	      | Selecciona todos los vinclos <a> que se abren en una ventana nueva	
+     $("a[target!='_blank']")	      | Selecciona todos los vinclos <a> que NO se abren en una ventana nueva
+     $("tr:even")	                  | Selecciona todas las filas <tr> pares	
+     $("tr:odd")	                  | Selecciona todas las filas <tr> impares
+--------------------------------------------------------------------------------------------------------------
+Referencia de selectores jQuery: https://www.w3schools.com/jquery/jquery_ref_selectors.asp
+Chuleta de selectores: https://www.w3schools.com/jquery/trysel.asp
+*************************************************************************************************************/
+      
+</script>
+
+</head>
+<body>
+
+<p>Si haces click sobre un párrafo desaparecerá.</p>
+<p>Inténtalo de nuevo</p>
+<p>Otra vez</p>
+<p>Otra vez</p>
+<p>Otra vez</p>
+<button>Ocultar todos</button>
+</body>
+</html>

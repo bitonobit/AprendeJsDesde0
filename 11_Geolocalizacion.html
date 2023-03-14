@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+	<!-- Metadata -->
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="canonical" href="#" />
+		<link rel="icon" type="img/png" href="img/favicon.png">
+        <title>JavaScript</title>
+        <meta name="description" content="Está es una página de ejemplos de Js">
+        <meta name="keywords" content="HTML5, CSS3, Javascript">
+        <meta name="author" content="Candy González">
+		<noscript>Lo siento, su navegador no soporta JavaScript!</noscript>
+</head>
+<body>
+    <p>Geolocalizame</p>
+    <button onclick="getLocation()">Click</button>
+    <p><strong>Nota:</strong> La propiedad de la geolocalización no es soportada por el IE8 o anteriores</p>
+    <p id="01"></p>
+    <script>
+        var x = document.getElementById("01");
+        function getLocation() {
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(showPosition);
+            } else { 
+                x.innerHTML = "Tu navegador no soporta la Geolocalización";
+            }
+        }
+        function showPosition(position) {
+            x.innerHTML = "Latitude: " + position.coords.latitude + 
+            "<br>Longitude: " + position.coords.longitude;
+        }
+    </script>
+
+</body>
+</html>

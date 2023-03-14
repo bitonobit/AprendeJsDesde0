@@ -1,0 +1,19 @@
+/************************************************************************
+ *                          Estilo personalizado                        * 
+*************************************************************************/
+html {
+    font-family: sans-serif;
+    margin-top: 3em;
+}
+
+body {
+    width: 50%;
+    max-width: 800px;
+    min-width: 480px;
+    margin: 0 auto;
+}
+
+.resultado {
+    color: white;
+    padding: 3px;
+}

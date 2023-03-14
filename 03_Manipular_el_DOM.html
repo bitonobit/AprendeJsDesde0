@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    	<!-- Metadata -->
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="canonical" href="#" />
+		<link rel="icon" type="img/png" href="img/favicon.png">
+        <title>Manipulando el DOM</title>
+        <meta name="description" content="Está es una página de ejemplos de Js">
+        <meta name="keywords" content="HTML5, CSS3, Javascript">
+        <meta name="author" content="Candy González">
+</head>
+<body>
+    <h2>Encontrar elementos HTML por nombre del elemento</h2>
+    <p>Este es el contenido del primmer párrafo</p>
+    <p>Este ejemplo demuestra como acceder a elementos HTML desde Js usando
+       el nombre del elemento <b>getElementsByTagName</b> </p>
+       <!-- En los párrafos siguientes aparecerán los resultados del script -->
+    <p id="a"></p>      
+    <p id="b"></p>
+    <p id="c"></p>
+    <script>
+        var x = document.getElementsByTagName("p");     
+        document.getElementById("a").innerHTML = 
+        '1º Párrafo (index 0) is: ' + x[0].innerHTML;
+        document.getElementById("b").innerHTML = 
+        '2º Párrafo (index 1) is: ' + x[1].innerHTML;
+        document.getElementById("c").innerHTML = 
+        '3º Párrafo (index 2) is: ' + x[2].innerHTML;       // muestra el párrafo a
+        document.getElementById("d").innerHTML = 
+        'nº Párrafo (index 8) is: ' + x[8].innerHTML;       // no muestra nada, pero si vemos la consola (f12)veremos el error
+    </script>
+    
+    <!-- ****************************************************************************************** -->
+    <h2>Encontrar elementos por el nombre de Clase</h2>
+    <p>Este es un párrafo sin atributo Class</p>
+    <p class="prueba">Este esun párrafo con el nombre de clase "prueba"</p>
+    <p class="prueba">Este ejemplo demuestra como acceder a elementos HTML desde Js usando
+    el atributo class="prueba" <b>getElementsByClassName</b></p>
+
+    <p id="e"></p>
+    <script>
+        var x = document.getElementsByClassName("prueba");
+        document.getElementById("e").innerHTML = 
+        '1º párrafo (index 0) con el atrtibuto class="prueba": ' + x[0].innerHTML;
+    </script>
+    <!-- ****************************************************************************************** -->
+
+    <h2>Encontrar elementos por el Query Selector</h2>
+    <p>Este es un párrafo de ejemplo</p>  
+    <p class="intro">Este esun párrafo con el nombre de clase "intro"</p>
+    <p class="intro">Este ejemplo demuestra como acceder a elementos HTML desde Js usando
+            el Selector p.intro <b>querySelectorAll</b></p>
+    
+    <p id="demo"></p>  
+    <script>
+    var x = document.querySelectorAll("p.intro");       // NO FUNCIONA EN EXPLORER 8 O ANTERIOR
+    document.getElementById("demo").innerHTML = 
+    '1º párrafo (index 0) con el Selector p.intro: ' + x[0].innerHTML;
+    </script>
+
+</body>
+</html>

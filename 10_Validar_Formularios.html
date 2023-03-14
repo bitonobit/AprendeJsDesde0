@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <!--  Meta etiquetas requeridas  -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!--  Otras meta etiquetas opcionales  -->
+    <meta name="description" content="Desarrollo de aplicaciones con tecnologías web">
+	<meta name="keywords" content="HTML5, CSS3, JavaScript, PHP, MySQL">
+	<meta name="author" content="Candy González">
+
+    <title>Desarrollo de aplicaciones con tecnologías Web</title>
+    <!-- CSS de Bootstrap  -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  </head>
+  <body>
+
+    <div class="jumbotron text-center">
+        <h1>Ejemplo Web con Bootstrap </h1>
+    </div>
+      
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-sm-4">
+            <h3>Validar un input</h3>
+            <!-- Otra forma de validar un input es incluyendo propiedades que limiten la entrada como type, min, max y required,
+            para llamar luego a una función que valide las entradas            -->
+            <p class="text-justify">Métodos DOM de validación de restricciones, para probarlo introduce un valor entre 100 y 300</p>
+            <input class="form-control-md" id="id1" type="number" min="100" max="300" required>
+            <button type="button" class="btn btn-primary" onclick="validame()">Enviar</button> <br> 
+            <p id="respuesta"></p>
+            <!-- Saber más en: https://www.w3schools.com/js/js_validation_api.asp -->
+          </div>
+
+          <div class="col-sm-4">
+            <h3>Validación automática de formularios HTML</h3>
+            <p class="text-justify">El navegador puede realizar automáticamente la validación del formulario HTM, para probarlo intenta hacer click en enviar sin escribir dentro del cuadro de texto.</p>
+            <form action="" method="post">
+                <input type="text" name="nombre" required>
+                <input type="submit" class="btn btn-primary" value="Enviar">
+            </form>
+          </div>
+
+          <div class="col-sm-4">
+            <h3>Validación de formularios con Js</h3>
+            <p class="text-justify">Si tengo un formulario con un submit, puedo llamar a la función con el evento onsubmit desde la etiqueta form, , para probarlo intenta hacer click en enviar sin escribir dentro del cuadro de texto.</p>
+            <form name="miFormulario" action="" onsubmit="return validaForm()" method="post">
+                Nombre: <input type="text" name="nombre">
+                <input type="submit" class="btn btn-primary" value="Enviar">
+            </form>
+          </div>
+          
+        </div>  <!-- fin de la fila -->
+
+        <div class="row">
+          <div class="col-sm-4">
+          </div>
+          <div class="col-sm-4">
+          </div>
+          <div class="col-sm-4">
+          </div>
+        </div> <!-- fin de la segunda fila -->
+
+        <hr>
+        
+        <div class="row">
+          <div class="col-sm-4">
+            <h2>Insertar Audio</h2>
+            <!--Formatos y más información en https://www.w3schools.com/html/html_media.asp-->
+            <h3>Extreme - More Than Words</h3> 
+            <audio controls>
+              <source src="audio/Extreme-More-Than-Words.ogg" type="audio/ogg">
+              <source src="audio/Extreme-More-Than-Words.mp3" type="audio/mpeg">
+              Tu navegador no soporta audio HTML5.
+            </audio>
+            
+          </div>
+          <div class="col-sm-4">
+            <h2>Insertar Vídeo</h2>
+            <h3>Andreas Bourani - Auf uns</h3> 
+            <video width="560" controls>
+              <source src="video/Andreas_Bourani_Auf_uns.mp4" type="video/mp4">
+              <source src="video/Andreas_Bourani_Auf_uns.ogg" type="video/ogg">
+              Tu navegador no soporta vídeo HTML5.
+            </video>
+          </div>
+
+          <div class="col-sm-4">
+            <h3>Inside the mind of a master procrastinator | Tim Urbane</h3>
+            <!-- Desde Youtube -->
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/arj7oStGLkU" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+          </div>
+          <!-- Saber más: https://www.w3schools.com/tags/ref_av_dom.asp -->
+        </div> <!-- fin de la tercera fila -->
+
+
+
+      </div>    <!-- fin del contenedor -->    
+    
+    <script>
+      function validame() {
+          // Esta función valida lo que pongamos en el input id1
+        var cajitaInput = document.getElementById("id1");     //Declara e inicializa una variable que contiene el objeto html input con id1
+        if (cajitaInput.checkValidity()) {                    //Usa el método checkvalidity() para verificar si el valor cumple los requerimientos. Devuelve true si los datos son válidos. Fuente:https://www.w3schools.com/js/js_validation_api.asp
+          document.getElementById("respuesta").innerHTML = "El valor introducido es válido";
+        } else {
+          document.getElementById("respuesta").innerHTML = cajitaInput.validationMessage; //En caso de no cumplirlos muestra el mensaje de error
+        } 
+      } 
+
+      function validaForm() {
+          // Esta función valida lo que pongamos en el input nombre del formulario
+      var x = document.forms["miFormulario"]["nombre"].value;
+      if (x == "") {
+          alert("Escribe un nombre en el formulario");
+          return false;
+      }
+      }
+    </script>
+
+
+ 
+    
+    <!-- Líbrerías de JavaScript utilizadas por Bootstrap 4  -->
+    <!-- Primero jQuery, segundo Popper.js, tercerro Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+  </body>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+  	<!-- Metadata -->
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="canonical" href="#" />
+    <link rel="icon" type="img/png" href="img/favicon.png">
+    <title>Reloj en JavaScript</title>
+    <meta name="description" content="Está es una página de ejemplos de Js">
+    <meta name="keywords" content="HTML5, CSS3, Javascript">
+    <meta name="author" content="Candy González">
+    <!-- Incluye Js dentro del Archivo HTML-->
+    <script>					
+      function tiempo() {
+            var hoy = new Date();
+            var h = hoy.getHours();
+            var m = hoy.getMinutes();
+            var s = hoy.getSeconds();
+            m = checkTime(m);
+            s = checkTime(s);
+            document.getElementById('txt').innerHTML =
+            h + ":" + m + ":" + s;
+            var t = setTimeout(tiempo, 500);
+          }
+          function checkTime(i) {
+            if (i < 10) {i = "0" + i};  // add zero in front of numbers < 10
+            return i;
+          }	
+    </script>
+    <noscript>Lo siento, su navegador no soporta JavaScript!</noscript>
+</head>
+<body onload="tiempo()">
+
+  <div id="txt"></div>
+
+</body>
+</html>

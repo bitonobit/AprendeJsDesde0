@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="Desarrollo de aplicaciones con tecnologías web">
+	  <meta name="keywords" content="HTML5, CSS3, JavaScript, PHP, MySQL">
+	  <meta name="author" content="Candy González">
+    <title>Desarrollo de aplicaciones con tecnologías Web</title>
+    <!-- CSS de Bootstrap  -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  </head>
+  <body>
+    <div class="jumbotron text-center">
+        <h1>E3 de la UF2 </h1>
+    </div>
+    <div class="container-fluid">
+        <div class="row">
+          <div class="col-md-2"></div>
+          <div class="col-md-6">
+            <h3>Registrar alumnos</h3>
+            <p class="text-left">Introducir los datos del alumno</p>
+            <form name="aluFormulario" action="" method="post" >
+              <div class="form-group">
+                <label for="nombre">Nombre:  </label>
+                <input type="text" name="nombre" class="form-control">
+              </div>
+              <div class="form-group">
+                <label for="apellido">Apellido:  </label>
+                <input type="text" name="apellido" class="form-control">
+              </div>
+              <div class="form-group">
+                <label for="dni">dni:  </label>
+                <input type="text" name="dni" class="form-control">
+              </div>
+            </form>
+          </div>
+          <div class="col-md-4">
+            <button id="registrar" class="btn btn-primary" onclick="validarAlumno()">Registrar</button>
+          </div>
+          <p id="error1"></p>
+        </div> <!--Fin segunda fila-->
+
+        <div class="row">
+          <div class="col-md-2"></div>
+          <div class="col-md-8" id="notasForm" style="display:none">
+            <h3>Notas</h3>
+            <p class="text-justify">Ingresar las notas del alumno/a</p>
+            <form action="" method="" name="notaFormulario">
+              <div class="form-group">
+                <label for="e1">E1:</label><input class="form-control-md" id="e1" name="e1" type="number" min="0" max="10" >
+                <label for="e2">E2:</label><input class="form-control-md" id="e2" name="e2" type="number" min="0" max="10" >
+                <label for="e3">E3:</label><input class="form-control-md" id="e3" name="e3" type="number" min="0" max="10" >
+                <label for="po">PO:</label><input class="form-control-md" id="po" name="po" type="number" min="0" max="10" >
+                <label for="pp">PP:</label><input class="form-control-md" id="pp" name="pp" type="number" min="0" max="10" >
+              </div>
+            </form>
+            <p id="validacion"></p>
+            <button type="button" class="btn btn-primary" onclick="validarNota()">Guardar</button>
+          </div>
+          <div class="col-md-2">
+          </div> 
+        </div>  <!-- fin de la fila -->
+        <hr>
+        <br><br><br>
+        
+        <div class="row">
+          <div class="col-md-10"></div>
+          <div class="col-md-2">
+            <button class="btn btn-primary" onclick="mostrarLista()">Ver lista</button>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-md-2"></div><br><br>
+          <div class="col-md-8" id="listaAlumnos"> </div>
+          <div class="col-md-2"></div>
+        </div>
+        
+    </div>    <!-- fin del contenedor -->    
+ 
+   
+    <script>
+    
+    var lista=[[]];
+    var alumno=[];
+    var tabla="<table class='table table-striped table-hover'><tr><th>Apellido</th><th>Nombre</th><th>DNI</th><th>E1</th><th>E2</th><th>E3</th><th>PO</th><th>PP</th><th>Definitiva</th></tr>";
+    var tr="";
+
+    /*-----------------------------------------------------------------------------
+      1. Validar un DNI: dado un DNI diga si es válido o no
+      Dato de prueba: 12345678Z
+      -------------------------------------------------------------------------------*/
+
+      function validarDNI(valor){   
+          var arreglo=["T","R","W","A","G","M","Y","F","P","D","X","B","N","J","Z","S","Q","V","H","L","C","K","E"];
+          var largo= valor.length;                            // calcula el largo del DNI: 9
+          largo=largo-1;	                                    // le quitamos 1 al largo, que será la letra: 8
+          var numero= parseInt(valor.substring(0,largo));     // obtenemos la cadena de números: 12345678
+          var letra = valor.substring(largo);                 // obtenemos la cadena desde la posición 8: Z
+          letra = letra.toUpperCase();                        // convertimos a mayúscula para buscar en el arreglo
+          var resto= numero%23;                               // aplicamos la fórmula para validar un DNI
+          if (arreglo[resto] == letra){                       // si la lera coincide con el arreglo es válido
+              return true;
+          }else{
+              return false;
+          }
+      }
+   
+    function validarAlumno(){
+          // Esta función valida lo que pongamos en el input nombre del formulario
+          var n = document.forms["aluFormulario"]["nombre"].value;
+          var a = document.forms["aluFormulario"]["apellido"].value;
+          var d = document.forms["aluFormulario"]["dni"].value;
+          if ((n == "")||(a=="")||(d=="")) {
+              alert("Rellena todos los campos del formulario");
+              // return false;
+          }else{
+            if(validarDNI(d)){
+            document.getElementById("notasForm").style.display="block";
+            document.getElementById("registrar").style.display="none";
+            alumno[0]=n;
+            alumno[1]=a;
+            alumno[2]=d;
+            return alumno;
+            }else{ 
+              alert("El dni es incorrecto");
+              document.forms["aluFormulario"]["dni"].value="";
+            }
+          }
+      }
+
+      function validarNota(){
+        var mensaje=document.getElementById("validacion");
+        var e1=document.forms["notaFormulario"]["e1"];
+        var e2=document.forms["notaFormulario"]["e2"];
+        var e3=document.forms["notaFormulario"]["e3"];
+        var po=document.forms["notaFormulario"]["po"];
+        var pp=document.forms["notaFormulario"]["pp"];
+     
+        try { 
+          if((e1.value==""||e2.value==""||e3.value==""||po.value==""||pp.value==""))  throw "Todas las notas deben ser colocadas, si el alumno no ha presentado la evaluación coloca un 0";        
+          if(isNaN(e1.value)||isNaN(e2.value)||isNaN(e3.value)||isNaN(po.value)||isNaN(pp.value)) throw "Todas las notas deben ser numéricas y estar comprendidas entre 0 y 10";
+          // x = Number(x);
+          function rango(eva,val) {
+            if(val.value < 0)  throw "La nota de la evaluación " + eva + " ser mayor o igual a cero (0)";
+            if(val.value > 10) throw "La nota de la evaluación " + eva + " ser menor o igual a diez (10)";
+          }
+          rango("E1",e1);
+          rango("E2",e2);
+          rango("E3",e3)
+          rango("PO",po);
+          rango("PP",pp);
+
+          alumno[3]=Number(e1.value);
+          alumno[4]=Number(e2.value);
+          alumno[5]=Number(e3.value);
+          alumno[6]=Number(po.value);
+          alumno[7]=Number(pp.value);
+          alumno[8]=((((alumno[3]+alumno[4]+alumno[5])/3)*0.3)+((alumno[6]*0.2)+(alumno[7]*0.8))).toFixed(2);
+          lista.push(alumno);
+
+          document.getElementById("notasForm").style.display="none";
+          document.getElementById("registrar").style.display="block";
+          e1.value="";
+          e2.value="";
+          e3.value="";
+          po.value="";
+          pp.value="";
+          document.forms["aluFormulario"]["nombre"].value="";
+          document.forms["aluFormulario"]["apellido"].value="";
+          document.forms["aluFormulario"]["dni"].value="";
+          tr+="<tr>";
+          for(let i=0;i<9;i++){
+            tr+="<td>"+alumno[i]+"</td>";
+          }
+          tr+="</tr>";
+          
+        }
+        catch(err) {
+          mensaje.innerHTML = "Error: " + err;
+        }
+        // Descomentar para demostrar que finally se ejecuta exista o no error limpiando el input
+        //finally {
+       //      document.getElementById("i01").value = "";
+       // }
+
+        // return tr;
+      } 
+
+      function mostrarLista(){
+        
+        document.getElementById("listaAlumnos").innerHTML=tabla+tr+"</table><br><br><br><br>";
+        
+      }
+
+    </script>
+
+
+ 
+    
+    <!-- Líbrerías de JavaScript utilizadas por Bootstrap   -->
+    <!-- Primero jQuery, segundo Popper.js, tercerro Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <!-- Saber más en: https://www.w3schools.com/js/js_validation_api.asp -->
+  </body>
+</html>

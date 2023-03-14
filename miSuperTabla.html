@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Una tabla dinámica</title>
+    <style>
+        table.blueTable {
+            border: 1px solid #1C6EA4;
+            background-color: #EEEEEE;
+            width: 100%;
+            text-align: left;
+            border-collapse: collapse;
+        }
+        table.blueTable td, table.blueTable th {
+            border: 1px solid #AAAAAA;
+            padding: 3px 2px;
+        }
+        table.blueTable tbody td {
+            font-size: 13px;
+        }
+        table.blueTable tr:nth-child(even) {
+            background: #D0E4F5;
+        }
+        table.blueTable thead {
+            background: #1C6EA4;
+            background: -moz-linear-gradient(top, #5592bb 0%, #327cad 66%, #1C6EA4 100%);
+            background: -webkit-linear-gradient(top, #5592bb 0%, #327cad 66%, #1C6EA4 100%);
+            background: linear-gradient(to bottom, #5592bb 0%, #327cad 66%, #1C6EA4 100%);
+            border-bottom: 2px solid #444444;
+        }
+        table.blueTable thead th {
+            font-size: 15px;
+            font-weight: bold;
+            color: #FFFFFF;
+            border-left: 2px solid #D0E4F5;
+        }
+        table.blueTable thead th:first-child {
+            border-left: none;
+        }
+
+        table.blueTable tfoot {
+            font-size: 14px;
+            font-weight: bold;
+            color: #FFFFFF;
+            background: #D0E4F5;
+            background: -moz-linear-gradient(top, #dcebf7 0%, #d4e6f6 66%, #D0E4F5 100%);
+            background: -webkit-linear-gradient(top, #dcebf7 0%, #d4e6f6 66%, #D0E4F5 100%);
+            background: linear-gradient(to bottom, #dcebf7 0%, #d4e6f6 66%, #D0E4F5 100%);
+            border-top: 2px solid #444444;
+        }
+        table.blueTable tfoot td {
+            font-size: 14px;
+        }
+        table.blueTable tfoot .links {
+            text-align: right;
+        }
+        table.blueTable tfoot .links a{
+            display: inline-block;
+            background: #1C6EA4;
+            color: #FFFFFF;
+            padding: 2px 8px;
+            border-radius: 5px;
+        }
+    </style>
+    <script>
+       //Declaramos e iniciamos una variable donde concatenar las etiquetas html que crean la tabla     
+       var tbl="<br><table class='blueTable'>"; 
+        var thead="<thead><tr>";
+        function pintarTabla(m,n){
+           //Función que pinta una tabla en el documento HTML  
+           var enc="";
+           var a ="";
+            for(let i=1;i<=m;i++){           //este bucle crea los tr o filas=m
+                tbl+="<tr>";     
+                    for(let j=1;j<=n;j++){	    //este bucle crea los td o celdas que serán las n columnas
+                        tbl+="<td>";
+                        tbl+="Candy"; 
+                        tbl+="</td>";
+                        if(i==1){
+                            enc='Enc'+j+'';
+                            a=document.getElementById(enc).value;
+                            thead+="<th>"+a+"</th>";
+
+                        }
+                    }
+                    tbl+="</tr>";                //cierra los tr
+                    thead+="</tr></thead>";     //cierra el thead
+                }
+                tbl+=thead+"</table><br>";	        //cierra la tabla
+                document.getElementById("div01").innerHTML=tbl;
+        }        
+
+        
+        function tamTabla(){
+            //Recogemos el número de filas m y de columnas n que el usuario ingresa en los inputs para determinar el tamaño de la tabla
+            var m=document.getElementById("m").value;
+            var n=document.getElementById("n").value;
+            //Variable para concatenar los encabezados de la tbla que nos dará el usuario
+            var encabezados="";     
+            for(let i=1;i<=n;i++){
+                //bucle que crea los imputs para los encabezados
+                encabezados+='<label>Encabezado columna '+i+':</label><input type="text" name="Enc'+i+'" id="Enc'+i+'" ><br>'
+            }
+            encabezados+='<button id="btn02" name="thead" onclick="pintarTabla('+m+','+n+');">Dibujar tabla</button>'
+            document.getElementById("div02").innerHTML=encabezados;
+            return m,n;
+        }
+    </script>
+</head>
+<body>
+    <h1>Dibujar una tabla dinámica de mxn </h1>
+    <label for="M">M:</label>
+    <input type="number" name="m" id="m">
+    <label for="N">N:</label> 
+    <input type="number" name="n" id="n">
+    <button id="btn01" name="tabla" onclick="tamTabla();">Tabla</button>
+    <br>
+    <hr>
+    <div id="div02">
+
+    </div>
+    <div id="div01">
+
+    </div>
+       
+    
+</body>
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Incluye la librería, donde scr especifica la ruta donde se encuentra. En este caso la de Google-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <title>Pintando una tabla</title>
+    <script>
+        $(document).ready(function(){                                 // asegura que el documento está cargado
+             $("tr:odd").css("background-color", "LightBlue");        // cambia los colores de las filas impares. Para colorear las pares cambiar odd por even
+        });
+    </script>
+</head>
+<body>
+<h1 style="text-align: center">Tabla con filas de colores alternos</h1>
+
+<table border="1" align="center">
+  <tr>
+    <th>Número</th>
+    <th>Selector</th>
+    <th>Descripción</th>
+  </tr>
+  <tr>
+    <td>1</td>
+    <td>p</td>
+    <td>párrafos</td>
+  </tr>
+  <tr>
+    <td>2</td>
+    <td>a</td>
+    <td>enlaces</td>
+  </tr>
+  <tr>
+    <td>3</td>
+    <td>li</td>
+    <td>elementos de una lista</td>
+  </tr>
+  <tr>
+    <td>4</td>
+    <td>h1</td>
+    <td>títulos de nivel 1</td>
+  </tr>
+  <tr>
+    <td>5</td>
+    <td>input</td>
+    <td>elementos de entrada de datos</td>
+  </tr>
+</table>
+
+</body>
+</html>
