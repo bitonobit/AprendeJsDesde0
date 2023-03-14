@@ -5,7 +5,7 @@
 var num1,num2;
   num1=prompt('Ingrese el primer número:','');  // Ventana de entrada de datos
   num2=prompt('Ingrese el segundo número:','');
-  num1=parseInt(num1);  // Función del lenguaje que convierte un valor a tipo entero
+  num1=parseInt(num1);                          // Función del lenguaje que convierte un valor a tipo entero
   num2=parseInt(num2);
   if (num1>num2) 
     {
